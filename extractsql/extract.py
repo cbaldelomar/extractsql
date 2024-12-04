@@ -53,12 +53,6 @@ def extract_to(
             # Move to the next result set or exit if no more
             if not cursor.nextset():
                 break
-
-        # # Fetch all rows from the result
-        # rows = cursor.fetchall()
-
-        # # Extract column names
-        # columns = [column[0] for column in cursor.description]
     except pyodbc.Error:
         print("Database error")
         raise
