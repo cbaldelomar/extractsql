@@ -34,7 +34,7 @@ def _ensure_output_file(query_file, output_file, output_format):
 
 def _get_args():
     parser = argparse.ArgumentParser(description="ExtractSQL Command-Line Tool")
-    parser.add_argument("--version", action="version", version="1.0.0")
+    parser.add_argument("--version", action="version", version="1.0.1")
 
     parser.add_argument(
         "-s", "--server", required=True, help="Server name or IP address"
@@ -75,6 +75,7 @@ def _get_args():
         "-b",
         "--batch_size",
         required=False,
+        type=int,
         default=100_000,
         help="Number of rows per batch to read from SQL",
     )
@@ -83,6 +84,7 @@ def _get_args():
         "-r",
         "--rows_per_sheet",
         required=False,
+        type=int,
         default=1_000_000,
         help="Rows per sheet (xlsx)",
     )
