@@ -5,6 +5,7 @@ Main
 import sys
 import logging
 import argparse
+from .__version__ import __version__
 from . import utils
 from .extract import extract_to
 from .constants import FORMAT_XLSX, FORMAT_CSV, FORMAT_TXT, BATCH_SIZE, ROWS_PER_SHEET
@@ -35,7 +36,7 @@ def _ensure_output_file(query_file, output_file, output_format):
 
 def _get_args():
     parser = argparse.ArgumentParser(description="ExtractSQL Command-Line Tool")
-    parser.add_argument("--version", action="version", version="1.0-0.9")
+    parser.add_argument("--version", action="version", version=__version__)
 
     parser.add_argument(
         "-s", "--server", required=True, help="Server name or IP address"

@@ -11,9 +11,14 @@ requires = ["pyodbc>=5.1.0", "XlsxWriter>=3.2.0", "pyarrow>=18.1.0"]
 with open("README.md", encoding="utf-8") as f:
     readme = f.read()
 
+# Read the version number from __version__.py
+version = {}
+with open("extractsql/__version__.py") as f:
+    exec(f.read(), version)
+
 setup(
     name=title,
-    version="1.0.1",
+    version=version["__version__"],
     description="Extract data from SQL database into an output file.",
     long_description=readme,
     long_description_content_type="text/markdown",
