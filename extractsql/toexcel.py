@@ -6,10 +6,11 @@ from datetime import datetime, date, time
 import pyodbc
 import xlsxwriter
 from tqdm import tqdm
+from .constants import BATCH_SIZE, ROWS_PER_SHEET
 
 
 def export_to_excel(
-    cursor: pyodbc.Cursor, file_path: str, batch_size=100_000, **kwargs
+    cursor: pyodbc.Cursor, file_path: str, batch_size=BATCH_SIZE, **kwargs
 ):
     """
     Export data from a pyodbc cursor to a Excel file using `XlsxWriter`.
@@ -21,7 +22,7 @@ def export_to_excel(
         **kwargs: Additional args like number of rows per Excel sheet (rows_per_sheet).
     """
 
-    rows_per_sheet = kwargs.get("rows_per_sheet", 1_000_000)
+    rows_per_sheet = kwargs.get("rows_per_sheet", ROWS_PER_SHEET)
 
     # Extract column names
     columns = [column[0] for column in cursor.description]

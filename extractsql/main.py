@@ -7,6 +7,7 @@ import logging
 import argparse
 from . import utils
 from .extract import extract_to
+from .constants import FORMAT_XLSX, FORMAT_CSV, FORMAT_TXT, BATCH_SIZE, ROWS_PER_SHEET
 
 logging.basicConfig(
     level=logging.INFO,
@@ -34,7 +35,7 @@ def _ensure_output_file(query_file, output_file, output_format):
 
 def _get_args():
     parser = argparse.ArgumentParser(description="ExtractSQL Command-Line Tool")
-    parser.add_argument("--version", action="version", version="1.0.1")
+    parser.add_argument("--version", action="version", version="1.0-0.9")
 
     parser.add_argument(
         "-s", "--server", required=True, help="Server name or IP address"
@@ -54,7 +55,7 @@ def _get_args():
         help="Path to the output file (if not specified, query file name is used)",
     )
 
-    format_values = ["xlsx", "csv", "txt"]
+    format_values = [FORMAT_XLSX, FORMAT_CSV, FORMAT_TXT]
     parser.add_argument(
         "-f",
         "--output_format",
@@ -76,7 +77,7 @@ def _get_args():
         "--batch_size",
         required=False,
         type=int,
-        default=100_000,
+        default=BATCH_SIZE,
         help="Number of rows per batch to read from SQL",
     )
 
@@ -85,7 +86,7 @@ def _get_args():
         "--rows_per_sheet",
         required=False,
         type=int,
-        default=1_000_000,
+        default=ROWS_PER_SHEET,
         help="Rows per sheet (xlsx)",
     )
 

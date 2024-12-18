@@ -6,6 +6,7 @@ import pyodbc
 from . import utils
 from .tocsv import export_to_csv
 from .toexcel import export_to_excel
+from .constants import FORMAT_XLSX
 
 
 def extract_to(
@@ -24,7 +25,12 @@ def extract_to(
     connection_string = utils.get_connection_string(connstring)
     query = utils.read_file(query_file)
 
-    fn = export_to_excel if utils.is_extension(output_file, ".xlsx") else export_to_csv
+    # Define the export function to use
+    fn = (
+        export_to_excel
+        if utils.is_extension(output_file, f".{FORMAT_XLSX}")
+        else export_to_csv
+    )
 
     try:
         conn = pyodbc.connect(connection_string)

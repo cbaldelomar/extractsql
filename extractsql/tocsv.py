@@ -7,9 +7,12 @@ import pyodbc
 import pyarrow as pa
 from pyarrow import csv
 from tqdm import tqdm
+from .constants import BATCH_SIZE
 
 
-def export_to_csv(cursor: pyodbc.Cursor, file_path: str, batch_size=100_000, **kwargs):
+def export_to_csv(
+    cursor: pyodbc.Cursor, file_path: str, batch_size=BATCH_SIZE, **kwargs
+):
     """
     Export data from a pyodbc cursor to a CSV or delimited text file using `pyarrow`.
 
