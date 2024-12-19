@@ -117,7 +117,6 @@ def _create_sheet(workbook: xlsxwriter.Workbook, columns: list[str], index: int)
     worksheet = workbook.add_worksheet(f"Sheet{index}")
 
     # Write column headers
-    for col_idx, header in enumerate(columns):
-        worksheet.write(0, col_idx, header)
+    worksheet.write_row(0, 0, columns)
 
     return worksheet
