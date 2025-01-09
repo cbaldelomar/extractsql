@@ -182,7 +182,7 @@ def start_process() -> float:
     start_time = time.time()
 
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"Process started     {"-" * 10} {current_time}")
+    print(f"Process started     {'-' * 10} {current_time}")
 
     return start_time
 
@@ -196,7 +196,7 @@ def end_process(start_time: float):
     end_time = time.time()
 
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"Process completed   {"-" * 10} {current_time}")
+    print(f"Process completed   {'-' * 10} {current_time}")
 
     # Calculate elapsed time
     elapsed_time_seconds = end_time - start_time
