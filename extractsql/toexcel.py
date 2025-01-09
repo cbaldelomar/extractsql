@@ -103,7 +103,7 @@ def export_to_excel(
         counter.close()
 
     print(
-        f"Exported {total_rows} rows in {sheet_index} sheet{"s" if sheet_index > 1 else ""}"
+        f"Exported {total_rows} rows in {sheet_index} sheet{'s' if sheet_index > 1 else ''}"
     )
 
     print("Saving workbook...")
