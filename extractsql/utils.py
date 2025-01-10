@@ -210,3 +210,22 @@ def end_process(start_time: float):
         print(f"Execution Time: {int(minutes)}m{seconds:.2f}s")
     else:
         print(f"Execution Time: {seconds:.2f}s")
+
+
+def ensure_valid_escape_sequences(text: str) -> str:
+    """
+    Ensure that escape sequences are valid in the text.
+    If the string contains invalid escape sequences, it is returned unchanged.
+
+    :param text: The text to validate.
+
+    :return: The text with valid escape sequences.
+    :rtype: str
+    """
+
+    try:
+        # Attempt to decode escape sequences
+        return text.encode("utf-8").decode("unicode_escape")
+    except UnicodeDecodeError:
+        # Return the original string if decoding fails
+        return text

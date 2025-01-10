@@ -125,6 +125,14 @@ def main():
         print(f"Invalid query file extension. Expected '{query_file_extension}'.")
         sys.exit(1)
 
+    column_delimiter = utils.ensure_valid_escape_sequences(column_delimiter)
+
+    if len(column_delimiter) > 1:
+        print(
+            'Column delimiter must be a single character unicode string (e.g., ",", "\\t", "|")'
+        )
+        sys.exit(1)
+
     try:
         # Log start time
         start_time = utils.start_process()
