@@ -58,7 +58,7 @@ extractsql [options]
 | -------- | ----------- | ------- |
 | `-u`, `--user` | Database username (for authentication).	| `None` |
 | `-p`, `--password` | Database password (for authentication). | `None` |
-| `-o`, `--output_file` | Path to the output file. If not specified, a default file name based on the query file name will be used. If no directory is specified, the output file will be saved in the same directory as the query file. | Derived automatically |
+| `-o`, `--output_file` | Path to the output file. If not specified, a default file name based on the query file name will be used. If no directory is specified, the output file will be saved in the same directory as the query file. | [Derived automatically](#output-file-naming) |
 | `-f`, `--output_format` |	Format of the output file (`xlsx`, `csv`, `txt`). Required if `-o` is not specified. | `None` |
 | `-c`, `--column_delimiter` | Column delimiter for flat file formats (`csv`, `txt`). Example: `","`, `"\t"`, `"\|"` | `","` 
 | `-b`, `--batch_size` | Number of rows to fetch from the database in each batch. | `100,000`
