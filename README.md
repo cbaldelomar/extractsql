@@ -52,6 +52,8 @@ extractsql [options]
 | `-d`, `--database` | Database name |
 | `-q`, `--query_file` | Path to the SQL query file (`.sql` expected) |
 
+> **Note:** If your path contains spaces, enclose it in double quotes (`"`).
+
 ### Optional Arguments
 
 | Argument | Description | Default |
@@ -64,7 +66,7 @@ extractsql [options]
 | `-b`, `--batch_size` | Number of rows to fetch from the database in each batch. | `100,000`
 | `-r`, `--rows_per_sheet` | Maximum rows per Excel sheet.	| `1,000,000`
 
-> Note: If `--user` and `--password` are not specified, **Windows Authentication** is used by default.
+> **Note:** If `--user` and `--password` are not specified, **Windows Authentication** is used by default.
 
 ### Examples
 
