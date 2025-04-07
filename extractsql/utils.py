@@ -230,7 +230,7 @@ def ensure_valid_escape_sequences(text: str) -> str:
 
     try:
         # Attempt to decode escape sequences
-        return text.encode("utf-8").decode("unicode_escape")
+        return text.encode(DEFAULT_ENCODING).decode("unicode_escape")
     except UnicodeDecodeError:
         # Return the original string if decoding fails
         return text
