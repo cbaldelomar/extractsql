@@ -8,7 +8,7 @@ from pathlib import Path
 from dataclasses import dataclass, field
 import pyodbc
 from charset_normalizer import from_bytes
-from .constants import READ_BYTES
+from .constants import READ_BYTES, DEFAULT_ENCODING
 
 
 @dataclass
@@ -89,7 +89,7 @@ def read_file(file_path: str) -> str:
             raw = f.read(READ_BYTES)
 
         result = from_bytes(raw).best()
-        encoding = result.encoding if result else "utf-8"
+        encoding = result.encoding if result else DEFAULT_ENCODING
 
         with open(file_path, "r", encoding=encoding, errors="replace") as f:
             return f.read()

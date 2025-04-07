@@ -14,3 +14,6 @@ ROWS_PER_SHEET = 1_000_000
 # Query file constants
 READ_BYTES = 10_000
 QUERY_FILE_EXTENSION = ".sql"
+
+# Default encoding for reading files
+DEFAULT_ENCODING = "utf-8"
