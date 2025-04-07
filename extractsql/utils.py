@@ -7,6 +7,8 @@ from datetime import datetime
 from pathlib import Path
 from dataclasses import dataclass, field
 import pyodbc
+from charset_normalizer import from_bytes
+from .constants import READ_BYTES
 
 
 @dataclass
@@ -83,11 +85,14 @@ def read_file(file_path: str) -> str:
     """
 
     try:
-        # Open the file in read mode
-        with open(file_path, "r") as file:
-            content = file.read()
+        with open(file_path, "rb") as f:
+            raw = f.read(READ_BYTES)
 
-            return content
+        result = from_bytes(raw).best()
+        encoding = result.encoding if result else "utf-8"
+
+        with open(file_path, "r", encoding=encoding, errors="replace") as f:
+            return f.read()
     except Exception:
         print("Error reading the file:", file_path)
         raise
