@@ -6,14 +6,22 @@ repo_url = f"https://github.com/{user}/{title}"
 
 cli = f"{title}={title}.main:main"
 
-requires = ["pyodbc>=5.1.0", "XlsxWriter>=3.2.0", "pyarrow>=18.1.0"]
+requires = [
+    "pyodbc>=5.1.0",
+    "XlsxWriter>=3.2.0",
+    "pyarrow>=18.1.0",
+    "charset_normalizer>=3.4.1",
+    "tqdm>=4.67.1",
+]
 
-with open("README.md", encoding="utf-8") as f:
+encoding = "utf-8"
+
+with open("README.md", encoding=encoding) as f:
     readme = f.read()
 
 # Read the version number from __version__.py
 version = {}
-with open("extractsql/__version__.py") as f:
+with open("extractsql/__version__.py", encoding=encoding) as f:
     exec(f.read(), version)
 
 setup(
