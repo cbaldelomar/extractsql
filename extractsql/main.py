@@ -8,7 +8,14 @@ import argparse
 from .__version__ import __version__
 from . import utils
 from .extract import extract_to
-from .constants import FORMAT_XLSX, FORMAT_CSV, FORMAT_TXT, BATCH_SIZE, ROWS_PER_SHEET
+from .constants import (
+    FORMAT_XLSX,
+    FORMAT_CSV,
+    FORMAT_TXT,
+    BATCH_SIZE,
+    ROWS_PER_SHEET,
+    QUERY_FILE_EXTENSION,
+)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -119,10 +126,8 @@ def main():
         )
         sys.exit(1)
 
-    query_file_extension = ".sql"
-
-    if not utils.is_extension(query_file, query_file_extension):
-        print(f"Invalid query file extension. Expected '{query_file_extension}'.")
+    if not utils.is_extension(query_file, QUERY_FILE_EXTENSION):
+        print(f"Invalid query file extension. Expected '{QUERY_FILE_EXTENSION}'.")
         sys.exit(1)
 
     column_delimiter = utils.ensure_valid_escape_sequences(column_delimiter)
@@ -143,8 +148,8 @@ def main():
 
         if odbc_driver is None:
             raise ValueError("No suitable ODBC driver found.")
-        else:
-            print(f"Connecting using {odbc_driver} driver")
+
+        print(f"Connecting using {odbc_driver} driver")
 
         connstring = utils.ConnString(server, database, user, password, odbc_driver)
 
